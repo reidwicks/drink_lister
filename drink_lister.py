@@ -23,7 +23,7 @@ class Drink():
 def menu():
     print(  
 """1. Add drink
-2. Add ingredients to drink
+2. Modify drink
 3. List drinks and ingredients
 4. Enter what you already own
 5. Create grocery list
@@ -38,7 +38,7 @@ def menu():
             add_drink()
             break
         elif int(answer) == 2:
-            add_ingred()
+            modify_drink()
             break
         elif int(answer) == 3:
             list_drinks()
@@ -71,8 +71,8 @@ def add_drink():
         new_drink.ingredients.append(addition)
     drinks.update({name : new_drink})
     
-def add_ingred():
-    print("What drink would you like to add ingredients to?")
+def modify_drink():
+    print("What drink would you like to modify?")
     print("So far you have:")
     list_drinks()
     selected_drink = None
@@ -85,6 +85,22 @@ def add_ingred():
             else:
                 print("Please select a valid drink")
         break
+    print("Would you like to..?")
+    print("1. Add ingredients", "\n2. Remove ingredients", "\n3.Rename drink")
+    while True:
+        answer = input()
+        if answer.isdigit == False:
+            print("That is not an option.")
+        elif answer == 1:
+            add_ingred()
+            break
+        elif answer == 2:
+            remove_ingred()
+            break
+        elif answer == 3:
+            rename_drink()
+            break
+            
     print(  "What ingredients would you like to add to the", selected_drink + "?", 
             "\n(when finished adding ingredients, type \"done\")")
     while True:
@@ -92,6 +108,15 @@ def add_ingred():
         if addition == "done":
             break
         selected_drink.ingredients.append(addition)
+
+def add_ingred():
+    print("Okay")
+    
+def remove_ingred():
+    print("Okay")
+    
+def rename_drink():
+    print("Okay")
     
 def list_drinks():
     if not drinks:
