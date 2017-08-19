@@ -127,7 +127,12 @@ def remove_ingred(selected_drink):
                 selected_drink.ingredients.remove(ingredient)
     
 def rename_drink(selected_drink):
-    print("Okay")
+    print("Renaming " + selected_drink.name + ".")
+    new_name = input("New name: ")
+    new_drink = Drink(new_name)
+    new_drink.ingredients = selected_drink.ingredients
+    drinks.update({new_name : new_drink})
+    del drinks[selected_drink.name]
     
 def list_drinks():
     if not drinks:
@@ -139,7 +144,6 @@ def list_drinks():
                 print("  " + ingr)
             if not drinks[item].ingredients:
                 print("  No ingredients added.")
-            print("")
         
 def save_to_file():
     filename = input("Please type a filename. \n")
