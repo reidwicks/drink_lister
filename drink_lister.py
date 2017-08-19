@@ -86,36 +86,47 @@ def modify_drink():
                 print("Please select a valid drink")
         break
     print("Would you like to..?")
-    print("1. Add ingredients", "\n2. Remove ingredients", "\n3.Rename drink")
+    print("1. Add ingredients", "\n2. Remove ingredients", "\n3. Rename drink")
     while True:
         answer = input()
         if answer.isdigit == False:
             print("That is not an option.")
-        elif answer == 1:
-            add_ingred()
+        elif int(answer) == 1:
+            add_ingred(selected_drink)
             break
-        elif answer == 2:
-            remove_ingred()
+        elif int(answer) == 2:
+            remove_ingred(selected_drink)
             break
-        elif answer == 3:
-            rename_drink()
+        elif int(answer) == 3:
+            rename_drink(selected_drink)
             break
-            
-    print(  "What ingredients would you like to add to the", selected_drink + "?", 
+        else:
+            print("That is not an option.")
+
+def add_ingred(selected_drink):
+    print(  "What ingredients would you like to add to the", selected_drink.name + "?", 
             "\n(when finished adding ingredients, type \"done\")")
     while True:
         addition = input()
         if addition == "done":
             break
         selected_drink.ingredients.append(addition)
-
-def add_ingred():
-    print("Okay")
     
-def remove_ingred():
-    print("Okay")
+def remove_ingred(selected_drink):
+    print(  "What ingredients would you like to remove from the", selected_drink.name + "?", 
+            "\n(when finished removing ingredients, type \"done\")")
+    print("You currently have:")
+    for ingredient in selected_drink.ingredients:
+        print("  " + ingredient)
+    while True:
+        removal = input()
+        if removal == "done":
+            break
+        for ingredient in selected_drink.ingredients:
+            if removal.lower() == ingredient:
+                selected_drink.ingredients.remove(ingredient)
     
-def rename_drink():
+def rename_drink(selected_drink):
     print("Okay")
     
 def list_drinks():
